@@ -1,13 +1,16 @@
 import './App.css';
-import Form from './Components/Form';
-import Test from './Components/Test';
+import CurrencyExchange from './Components/CurrencyExchange';
+// import Form from './Components/Form';
+// import Test from './Components/Test';
+
 
 function App() {
   return (
     <div className="App">
       **************React App**************
-      <Form></Form>
-      <Test></Test>
+      {/* <Form></Form>
+      <Test></Test> */}
+      <CurrencyExchange></CurrencyExchange>
     </div>
   );
 }
