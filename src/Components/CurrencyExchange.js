@@ -3,40 +3,29 @@ import axios from 'axios'
 const CurrencyExchange = () => {
     const [myData, setMyData] = useState([]);
     const [isError, setIsError] = useState('');
-    const BaseApi = "https://api.exchangeratesapi.io/v1/latest? access_key = API_KEY";
+    const BaseApi = "https://api.exchangeratesapi.io/v1/";
 
-      // using Async Await
-  const getMyPostData = async () => {
-    try {
-      const res = await axios.get(BaseApi);
-      setMyData(res.data);
-    } catch (error) {
-      setIsError(error.message);
-    }
-  };
+    useEffect(() => {
+        axios
+            .get(BaseApi)
+            .then((response)=> setMyData(response.data))
+            .catch((error) => setIsError(error.message));
+    }, []);
+  return (<>
+       {isError !== "" && <h2>{isError}</h2>}
 
-  // NOTE:  calling the function
-  useEffect(() => {
-    getMyPostData();
-  }, []);
-
-  return (
-    <>
-      <h1>Axios Tutorial</h1>
-      {isError !== "" && <h2>{isError}</h2>}
-
-      <div className="grid">
-        {myData.map((e) => {
-          const { id, title, thumbnailUrl } = e;
+      <div>
+        {myData.map((post) => {
+          const { body, id, title } = post;
           return (
             <div key={id} className="card">
-                <h2>{title.toUpperCase()}</h2>
-                <img src={thumbnailUrl} alt={title} loading="lazy" />
+              <h2>{title.slice(0, 15).toUpperCase()}</h2>
+              <p>{body.slice(0, 100)}</p>
             </div>
           );
         })}
       </div>
-    </>
+      </>
   );
 }
 
