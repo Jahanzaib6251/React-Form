@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../App.css'
 import axios from 'axios'
-const CurrencyExchange = () => {
+const Photos = () => {
     const [myData, setMyData] = useState([]);
     const [isError, setIsError] = useState('');
     const BaseApi = "https://api.unsplash.com/photos/?client_id=PnZ559yFk3ZGfi5XB5O5BkpKG5eKEV9DFfgVCQQ5GMM";
@@ -44,4 +44,4 @@ const CurrencyExchange = () => {
   );
 }
 
-export default CurrencyExchange
+export default Photos
